@@ -1,0 +1,65 @@
+<html>
+
+<!--JavaScript Program to print Floyd triangle -->
+
+<head>
+
+<title>Floyd's Triangle </title>
+
+</head>
+
+<!--Internal Style CSS-->
+
+<style>
+
+h3 {
+
+font-family:arial;
+
+}
+
+</style>
+
+
+<body>
+
+<!--Internal JS code-->
+
+<script>
+
+var rows=0, number = 1, counter=0, j=0;
+
+var num_value = parseInt(prompt("Enter number: "));
+
+document.write("<br>");
+
+document.write("<h3> Floyd's Triangle</h3>");
+
+for ( counter = 1 ; counter <= num_value; counter++ )
+
+{
+
+for ( j = 1 ; j <= counter ; j++ )
+
+{
+
+document.write("<font face='arial' size='3'>");
+
+document.write(" " + number + " </font>");
+
+number++;
+
+}
+
+
+document.write("<br>");
+
+}
+
+document.write("<h3> End of Program </h3>");
+
+</script>
+
+</body>
+
+</html>

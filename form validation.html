@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <style>
+    body{
+display:flex;
+flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      justify-content: center;
+      height: 70vh;
+      margin: 0;
+      background-color: lightblue;
+    }
+
+
+    form {
+      text-align: left;
+    }
+
+    h1 {
+      text-align: center;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <h1><u>REGISTRATION FORM</u></h1>
+ 
+  <form name="reg" onsubmit="return validateform()">
+<!--<h1>REGISTRATION FORM</H1>-->
+    Name: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<input type="text" name="fname" >
+<br><br>
+Date of Birth:&nbsp; &nbsp;
+<input type="text" name="dob"><br><br>
+Gender:&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<input type="radio" name="gender">
+<label name="Male">Male</label>
+<input type="radio" name="gender">
+<label name="Female">Female</label><br><br>
+Address: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; <textarea rows="5" cols="30" placeholder="Enter full address "></textarea><br><br>
+Email: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<input type="text" name="mail"><br><br>
+Phone: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+<input type="text" name="mobile"><br><br>
+&nbsp; &nbsp;  
+<input type="submit">&nbsp; <input type="reset">
+  </form>
+ 
+
+  <script>
+    function validateform()
+{
+var fname = document.forms["reg"]["fname"].value;
+var dob = document.forms["reg"]["dob"].value;
+var mail = document.forms["reg"]["mail"].value;
+var mobile = document.forms["reg"]["mobile"].value;
+
+if (fname === "")
+{
+        alert("Name is required");
+        return false;
+        }
+if (dob === "" || isNaN(dob))          
+       {
+        alert("Please enter your dob ");
+        return false;
+}
+if (mobile === "" || isNaN(mobile) || mobile.length !== 10)
+  {
+        alert("Invalid Mobile Number");
+        return false;
+    }
+if (mail === "" || !isValidEmail(mail))
+{
+        alert("Invalid Email Address");
+        return false;
+    }
+return true;
+}
+
+function isValidEmail(mail)
+{
+    var valid = /\S+@\S/;
+    return valid.test(mail);
+}
+  </script>
+</body>
+</html>
+

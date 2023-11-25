@@ -1,0 +1,86 @@
+<html>
+<head>
+    <title>Calendar</title>
+
+    <style>
+        table, th, td {
+            border: 2px solid black;
+			font-weight:bold;
+            color: black;
+            width: 10%;
+        }
+
+        .myDiv {
+            border: 6px;
+        }
+
+        tr:nth-child(odd) {
+            background-color: white;
+        }
+		tr:nth-child(even) {
+            background-color: white;
+        }
+    </style>
+
+    <body style="background-color: lightblue;">
+</head>
+<center>
+    <div class="myDiv">
+        <h2 style="color: black; text-align: center;"><b>CALENDAR</b></h2>
+    </div>
+   
+    <label for="year">Enter a year: </label>
+    <input type="number" id="year" min="1" value="">
+<label for="month">Enter a month: </label>
+    <input type="number" id="month" min="1" max="12" value="">
+    <br><br>
+    <button onclick="generateCalendar()">Submit</button>
+<button onclick="generateCalendar()">Reset</button>
+
+    <div id="calendar"></div>
+
+    <script>
+        function generateCalendar() {
+            const monthInput = document.getElementById('month');
+            const yearInput = document.getElementById('year');
+            const calendarContainer = document.getElementById('calendar');
+
+            const month = parseInt(monthInput.value, 10);
+            const year = parseInt(yearInput.value, 10);
+
+            if (month >= 1 && month <= 12 && year >= 1) {
+                const date = new Date();
+                date.setFullYear(year);
+                date.setMonth(month - 1); // Set the month (0-11)
+
+                const monthName = date.toLocaleString('default', { month: 'long' });
+
+                const daysInMonth = new Date(year, month, 0).getDate();
+                const firstDayOfMonth = new Date(year, month - 1, 1).getDay();
+
+                let calendarHTML = `<h2>${monthName} ${year}</h2><table><tr><th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th></tr><tr>`;
+
+                for (let i = 0; i < firstDayOfMonth; i++) {
+                    calendarHTML += '<td></td>';
+                }
+
+                for (let day = 1; day <= daysInMonth; day++) {
+                    calendarHTML += `<td>${day}</td>`;
+                    if ((firstDayOfMonth + day) % 7 === 0) {
+                        calendarHTML += '</tr>';
+                        if (day < daysInMonth) {
+                            calendarHTML += '<tr>';
+                        }
+                    }
+                }
+
+                calendarHTML += '</table>';
+                calendarContainer.innerHTML = calendarHTML;
+            } else {
+                calendarContainer.innerHTML = 'Invalid month or year. Please enter a valid month (1-12) and year.';
+            }
+        }
+    </script>
+</center>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+
+<title>Image and Text Hover</title>
+
+<style>
+
+#image-container {
+
+position: relative;
+
+width: 400px;
+
+height: 200px;
+
+background-color: #ccc;
+
+text-align: center;
+
+}
+#image-container img {
+
+width: 100%;
+
+height: auto; }
+
+#hidden-content {
+
+position: absolute;
+
+top: 0;
+
+left: 0;
+
+width: 100%;
+
+height: 200%;
+
+background-color: rgba(0, 0, 0, 0.5);
+
+color: white;
+
+text-align: center;
+
+display: none; }
+
+</style>
+</head>
+
+<body>
+
+<div id="image-container">
+
+<img src="imgred.jpg" alt="Image 1">
+
+<p id="image-text">I am a beautiful red barbie!!</p>
+
+<div id="hidden-content">
+
+<img src="imgblue.jpg" alt="Image 2">
+
+</div>
+
+</div>
+<script>
+
+const imageContainer = document.getElementById('image-container');
+
+const hiddenContent = document.getElementById('hidden-content');
+
+const imageText = document.getElementById('image-text');
+
+imageContainer.addEventListener('mouseover', () => {
+
+hiddenContent.style.display = 'block';
+
+imageText.textContent = 'Hey!now iam blue barbie!!'; });
+
+imageContainer.addEventListener('mouseout', () => {
+
+hiddenContent.style.display = 'none';
+
+imageText.textContent = 'I am a beautiful red barbie !!'; });
+
+</script>
+
+</body>
+
+</html>

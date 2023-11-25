@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>General Knowledge Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: palegreen;
+        }
+
+        #examContainer {
+            background-color: palegreen;
+            border: 1px solid palegreen;
+	    padding: 20px;
+        }
+
+        form {
+            text-align: left;
+        }
+
+        #result {
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+
+<div id="examContainer">
+    <h1 align="center">General Knowledge Quiz</h1>
+
+    <form id="examForm">
+	<h3>Question 1: Name the first 3 planets in our solar system?</h3>
+    <label>
+        <input type="radio" name="q1" value="neptune,mars,jupiter"> neptune,mars,jupiter
+    </label>
+    <label>
+        <input type="radio" name="q1" value=" mercury,venus,earth"> mercury,venus,earth
+    </label>
+   
+    <label>
+        <input type="radio" name="q1" value="earth,venus,neptune"> earth,venus,neptune
+    </label>
+
+    <h3>Question 2: Gir National Park in Gujarat is famous for?</h3>
+    <label>
+        <input type="radio" name="q2" value="lion">lion
+    </label>
+    <label>
+        <input type="radio" name="q2" value="tiger">tiger
+    </label>
+    <label>
+        <input type="radio" name="q2" value="camel">camel
+    </label>
+
+    <h3>Question 3: Who wrote Romeo and Juliet?
+
+</h3>
+    <label>
+        <input type="radio" name="q3" value="William Shakespeare">William Shakespeare
+    </label>
+    <label>
+        <input type="radio" name="q3" value="william wordsworth">william wordsworth
+    </label>
+    <label>
+        <input type="radio" name="q3" value="Robert frost">Robert frost
+    </label>
+  <h3>Question 4:Which plant grows in desert?
+</h3>
+    <label>
+        <input type="radio" name="q4" value="Cactus">Cactus
+    </label>
+    <label>
+        <input type="radio" name="q4" value="lotus">lotus
+    </label>
+    <label>
+        <input type="radio" name="q4" value="sunflower">sunflower
+    </label>
+        <br>
+        <br>
+        <input type="button" value="Submit" onclick="submitExam()">
+    </form>
+
+    <div id="result" style="display: none;">
+        <h2>Result:</h2>
+        <p id="score"></p>
+        <h3>Correct Answers:</h3>
+        <ul id="correctAnswers"></ul>
+    </div>
+</div>
+
+<script>
+	function submitExam() {
+        // Questions and Correct Answers
+        const correctAnswers = {
+            q1: ' mercury,venus,earth',
+            q2: 'lion',
+            q3: 'William Shakespeare',
+            q4: 'Cactus',
+        };
+
+        // Get user's answers
+        const userAnswers = {
+            q1: document.querySelector('input[name="q1"]:checked').value,
+            q2: document.querySelector('input[name="q2"]:checked').value,
+            q3: document.querySelector('input[name="q3"]:checked').value,
+            q4: document.querySelector('input[name="q4"]:checked').value,
+        };
+
+        // Calculate score
+        let score = 0;
+        for (const question in correctAnswers) {
+            if (correctAnswers[question] === userAnswers[question]) {
+                score++;
+            }
+        }
+
+        // Display result
+        document.getElementById('score').innerText = `Score: ${score} out of 4`;
+        const correctAnswersList = document.getElementById('correctAnswers');
+        correctAnswersList.innerHTML = '';
+
+        for (const question in correctAnswers) {
+            const li = document.createElement('li');
+            li.innerHTML = `<strong>Question ${question.slice(1)}:</strong> ${correctAnswers[question]}`;
+            correctAnswersList.appendChild(li);
+        }
+
+        // Show result div
+        document.getElementById('result').style.display = 'block';
+    }
+</script>
+</body>
+</html>
